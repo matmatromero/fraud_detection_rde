@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --prudential-blue: #00338D;
+  --slate-50: #F8FAFC;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 font-sans antialiased;
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md bg-white/70 border border-white/40 shadow-sm transition-all duration-300;
+  }
+  
+  .glass-card-hover {
+    @apply hover:bg-white/90 hover:shadow-xl hover:border-white/60 hover:-translate-y-1;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer text-slate-500 hover:bg-blue-50 hover:text-prudential-blue;
+  }
+
+  .nav-item-active {
+    @apply bg-blue-50 text-prudential-blue font-bold shadow-sm;
+  }
+
+  .risk-brief-text {
+    @apply font-serif leading-relaxed text-slate-800;
+  }
+
+  .sidebar-container {
+    @apply w-72 bg-white border-r border-slate-200 flex flex-col h-screen fixed left-0 top-0;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-200 rounded-full hover:bg-slate-300;
+}

@@ -1,0 +1,23 @@
+graph TD
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef input fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#155724;
+    classDef agent fill:#cce5ff,stroke:#0056b3,stroke-width:2px,color:#004085;
+    classDef process fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#856404;
+    classDef output fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#721c24;
+
+    A["Start: Verified Claim Data<br/>(Docs, Diagnosis, Dates, Amount)"]:::input --> B{"Parallel<br/>Agent Execution"}:::process
+    
+    B --> C["🕵️ Forensic Document Agent<br/>Pixel & Metadata Analysis"]:::agent
+    B --> D["🩺 Clinical Logic Agent<br/>Gemini AP: Plausibility Check"]:::agent
+    B --> E["🕸️ Data Correlation Agent<br/>DB Pattern & Relational Search"]:::agent
+    
+    C -->|"Forensic Score & Evidence"| F["⚖️ Lead Investigator<br/>(Aggregation & Synthesis)"]:::process
+    D -->|"Clinical Score & Evidence"| F
+    E -->|"Correlation Score & Evidence"| F
+    
+    F --> G{"Determine Risk Tier<br/>& Action"}:::process
+    
+    G -->|"> 0.8 Critical"| H["🚨 Refer to SIU"]:::output
+    G -->|"> 0.5 High"| I["👩‍⚖️ Escalate for Manual Audit"]:::output
+    G -->|"> 0.3 Medium"| J["🔍 Additional Verification Required"]:::output
+    G -->|"<= 0.3 Low"| K["✅ Approve"]:::output
