@@ -1,58 +1,44 @@
-# Agentic Fraud Investigator: User Walkthrough Guide
+# Click-by-Click User Guide: Agentic Fraud Investigator
 
-Welcome to the **Prudential Agentic Fraud Investigator**. This system utilizes advanced AI agents to silently review, corroborate, and adjudicate medical claims *before* any money leaves the door. 
+This guide tells you exactly what to click on your screen to process a claim using the new Agentic Fraud Investigator UI.
 
-This guide will walk you through interacting with the platform as an Executive or Fraud Analyst.
+## Starting on the Dashboard
+1. Open the website. You will see a table titled **Pending Claims Queue**.
+2. Look at the rows. Find a pending claim (for example, Claim **C-2026-9999999** for John Doe).
+3. Click the white **Process &rarr;** button located on the far right side of that row.
 
----
+## Step 1: Intake Summary
+4. The screen will change to the claim details view.
+5. Wait a few seconds for the **"Intake Discovery Agent"** to finish its loading animation.
+6. Scroll down to review the text boxes (Claim Summary, Preliminary Summary, etc.).
+7. When you are done reading, look at the timeline graphic at the top of your screen (the four circles connected by lines).
+8. **Click the second circle** titled **"2. EVIDENCE REVIEW"**.
 
-## 1. Accessing the System
-Open your web browser and navigate to the secure Cloud Application URL provided to you by your system administrator. 
+## Step 2: Evidence Review
+9. You are now looking at the split screen. On the left is an extracted Medical Document. On the right are text excerpts.
+10. Scroll to the very bottom of the right-hand panel.
+11. **Click the blue button** that says **"Submit Extracted Facts to Agentic Gate &rarr;"**.
 
-No technical setup is required on your end. The AI agents and data processing happen securely in the backend.
+## Step 3: Agentic Fraud Gate (AI Scan)
+12. The timeline at the top will automatically move to Step 3.
+13. In the center of the screen, you will see a box for the Multi-Agent Investigator.
+14. **Click the large blue button** titled **"Launch Multi-Agent Scan"**.
+15. Wait about 3-5 seconds. You will see three loading bars (Forensic, Clinical, and Correlation agents) spinning.
+16. The AI will output a final report on your screen. Read the "Findings" section to see the plain-text reasons for the decision.
 
----
+## Step 4/Ending the Process
+Depending on what the AI decided in Step 3, you have two possible outcomes:
 
-## 2. The Dashboard (Command Center)
-Upon opening the application, you will land on the **Agent Dashboard**. 
+**Scenario A: The claim is CLEAN (Green)**
+17. If no fraud is found, a new button will appear at the bottom right.
+18. **Click the green button** titled **"Proceed to Benefit Assessment"**.
+19. This takes you to the final screen showing the payout total.
 
-- **Executive Metrics (Top Bar):** At the top, you will see real-time Key Performance Indicators (KPIs) such as total "Bi-Annual Claims Cost Avoided" and "Anomalies Blocked". These actively update as the AI halts fraudulent payments.
-- **Pending Claims Queue:** Below the metrics is your workflow queue. This lists incoming claims that require your attention.
+**Scenario B: The claim is FRAUD (Red)**
+20. If severe fraud is found, the system will highlight the box in red.
+21. At the bottom, you will see a red alert: **"Process Halted. Benefit Assessment is Locked."**
+22. You cannot proceed further. The claim is blocked from payment.
 
-**Action:** Look for a claim with a "Pending Review" status and click the **Process &rarr;** button on the far right.
-
----
-
-## 3. The 4-Step Investigation Process
-Clicking "Process" launches the investigation timeline for that specific claim. The system is broken down into four intelligent steps:
-
-### Step 1: Intake Summary
-- **What happens:** The **Intake Discovery Agent** automatically pulls context from disparate databases (Policy, Identity, OCR document scraping).
-- **Your Role:** Review the aggregated high-level facts. You will see a "Claim Summary" narrative confirming the core details (Admission dates, benefits claimed, and total amount).
-
-### Step 2: Evidence Review
-- **What happens:** The system shows you exactly what documents were submitted.
-- **Your Role:** On the left, you can review the submitted medical records (e.g., Doctor's Summary). On the right, you can see snippets of text that the AI has extracted directly from those documents to verify policy coverages.
-- **Action:** Once satisfied, click the blue **Submit Extracted Facts to Agentic Gate &rarr;** button at the bottom right.
-
-### Step 3: Agentic Fraud Gate (The AI Investigation)
-This is where the magic happens. The claim is securely passed to three distinct AI specialized agents working in tandem. Click **"Launch Multi-Agent Scan"** to begin the automated investigation:
-
-1. 🕵️ **Forensic Document Agent:** Scans the uploaded PDFs or images for digital alterations, font misalignment, or metadata tampering. 
-2. 🩺 **Clinical Logic Agent:** Acts as an automated medical expert. It verifies if the hospital stay length rationally aligns with the diagnosis and checks historical records for "diagnosis-grooming" patterns.
-3. 🕸️ **Data Correlation Agent:** Searches massive historical databases to see if the Claimant, Dependents, or the Hospital belongs to known "bad actor" networks.
-
-Wait briefly for the AI agents to synthesize their final verdict.
-
-### Step 4: Final Adjudication (The Verdict)
-Once the Multi-Agent Gate finishes, it will generate a comprehensive narrative report and assess a final **Risk Tier**.
-
-- **🟢 Cleared Case:** If no fraud patterns are detected, the system will highlight the investigation green. You can click "Proceed to Benefit Assessment" to view the final automated payout generation.
-- **🔴 Critical/Blocked Case:** If severe anomalies are found (like a digitally altered PDF mixed with an impossible medical diagnosis), the agents will flag the case as **Blocked**. The system halts the pipeline and refuses to authorize a payout. The claim is automatically marked for manual Special Investigations Unit (SIU) follow-up.
-
-Note: Even if a case is determined to be fraudulent, you can review the "Evidence Highlights" left by each AI Agent to understand exactly *why* the claim was rejected within seconds.
-
----
-
-## Need Help?
-If you experience any graphical issues or the system appears "Pending" for longer than 30 seconds, simply refresh your browser window to securely reload the dashboard queue.
+## Returning to the Start
+23. Whenever you want to go back to the main list of claims, look at the dark blue menu bar at the absolute top of the screen.
+24. **Click the text** that says **"&larr; Back to Queue"**.
