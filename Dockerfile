@@ -9,9 +9,7 @@ RUN npm install
 
 COPY . .
 
-# Pass VITE_API_URL as a build argument
-ARG VITE_API_URL
-ENV VITE_API_URL=$VITE_API_URL
+ENV VITE_API_URL=https://fraud-detection-rde-git-backend-52113311114.europe-west1.run.app
 
 RUN npm run build
 
