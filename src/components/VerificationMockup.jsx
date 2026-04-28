@@ -116,6 +116,71 @@ const VerificationMockup = () => {
         </div>
     );
 
+    const HelpComponents = () => (
+        <>
+            <button 
+                onClick={() => setShowGuide(true)}
+                className="fixed bottom-8 left-8 z-50 flex items-center gap-2 bg-slate-800 text-white px-6 py-3 rounded-full font-black shadow-2xl hover:bg-slate-900 hover:-translate-y-1 transition transform border-4 border-white"
+            >
+                <Info size={20} /> 
+                Show UI Instructions
+            </button>
+
+            <AnimatePresence>
+            {showGuide && (
+                <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-md z-[100] flex justify-center items-center p-4">
+                    <motion.div 
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.9, opacity: 0 }}
+                        className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl w-full"
+                    >
+                        <div className="bg-blue-600 p-4 px-6 flex justify-between items-center text-white">
+                             <h2 className="text-xl font-black flex items-center gap-2"><CheckCircle2 size={24}/> Step-by-Step UI Guide</h2>
+                             <button onClick={() => setShowGuide(false)} className="text-white hover:text-blue-200 font-bold px-3 py-1 bg-white/20 rounded hover:bg-white/30 transition">&times; Close</button>
+                        </div>
+                        <div className="p-8 grid grid-cols-2 gap-8 text-[15px] leading-relaxed text-slate-700 max-h-[80vh] overflow-y-auto w-full">
+                            <div className="space-y-6">
+                                <div>
+                                    <h3 className="font-bold text-blue-600 mb-2 border-b pb-1 text-lg">Starting a Claim</h3>
+                                    <p className="mb-2">1. Find a pending claim in the list (e.g. John Doe).</p>
+                                    <p>2. Click the <span className="bg-slate-100 border px-2 py-1 rounded text-xs font-bold text-slate-800">Process &rarr;</span> button at the far right.</p>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-blue-600 mb-2 border-b pb-1 text-lg">Step 1: Intake Summary</h3>
+                                    <p className="mb-2">3. Wait a few seconds for the Intake Agent animation to finish.</p>
+                                    <p>4. <b>Look at the top of the next screen</b> and click the second circle titled <b>2. EVIDENCE REVIEW</b>.</p>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-blue-600 mb-2 border-b pb-1 text-lg">Step 2: Evidence Review</h3>
+                                    <p className="mb-2">5. Review the extracted medical document on the left.</p>
+                                    <p>6. Scroll to the very bottom right and click the blue button: <br/><b>Submit Extracted Facts to Agentic Gate &rarr;</b>.</p>
+                                </div>
+                            </div>
+                            <div className="space-y-6 border-l pl-8">
+                                <div>
+                                    <h3 className="font-bold text-blue-600 mb-2 border-b pb-1 text-lg">Step 3: Agentic Fraud Gate</h3>
+                                    <p className="mb-2">7. Once you transition to the 3rd tab, click <b>Launch Multi-Agent Scan</b>.</p>
+                                    <p>8. Watch the three AI agents process the forensic and clinical logs in real-time.</p>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-blue-600 mb-2 border-b pb-1 text-lg">Step 4: Final Outcome</h3>
+                                    <p className="mb-2">9. <b>If Cleared (Green):</b> Click the "Proceed to Benefit Assessment" button.</p>
+                                    <p>10. <b>If Fraud (Red):</b> The system locks automatically.</p>
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-blue-600 mb-2 border-b pb-1 text-lg">Returning to Queue</h3>
+                                    <p>11. At any time, click the prominent <b>&larr; Back to Users Queue</b> button located in the top-left corner to choose another user.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            )}
+            </AnimatePresence>
+        </>
+    );
+
     const handleSelectClaim = async (claim) => {
         setClaimData(claim);
         setFraudStatus('Pending');
@@ -250,66 +315,10 @@ const VerificationMockup = () => {
                 <KPIHeader />
                 
                 <div className="p-8 max-w-6xl mx-auto w-full">
-                    <div className="flex justify-between items-center mb-6">
-                        <h1 className="text-2xl font-bold text-slate-800">Pending Claims Queue</h1>
-                        <button 
-                            onClick={() => setShowGuide(!showGuide)}
-                            className="flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded font-bold hover:bg-blue-100 transition border border-blue-200 shadow-sm"
-                        >
-                            <Info size={16} /> 
-                            {showGuide ? "Hide How-to Guide" : "📖 How to use this UI"}
-                        </button>
-                    </div>
+                    <h1 className="text-2xl font-bold text-slate-800 mb-6">Pending Claims Queue</h1>
 
-                    <AnimatePresence>
-                    {showGuide && (
-                        <motion.div 
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="bg-white border-l-4 border-l-blue-500 rounded-r shadow-md mb-8 overflow-hidden"
-                        >
-                            <div className="p-6">
-                                <h2 className="text-lg font-black text-slate-800 mb-4 flex items-center gap-2"><CheckCircle2 size={20} className="text-blue-500"/> Step-by-Step UI Guide</h2>
-                                <div className="grid grid-cols-2 gap-8 text-sm text-slate-700">
-                                    <div className="space-y-4">
-                                        <div>
-                                            <h3 className="font-bold text-blue-600 mb-1">Starting a Claim</h3>
-                                            <p className="mb-1">1. Find a pending claim in the list below (e.g. John Doe).</p>
-                                            <p>2. Click the <span className="bg-slate-100 border px-1 py-0.5 rounded text-xs font-bold">Process &rarr;</span> button at the far right.</p>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-bold text-blue-600 mb-1">Step 1: Intake Summary</h3>
-                                            <p className="mb-1">3. Wait a few seconds for the initial Intake Agent to finish scanning.</p>
-                                            <p>4. When you are done reading, <b>look at the top of the next screen</b> and click the second circle titled <b>2. EVIDENCE REVIEW</b>.</p>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-bold text-blue-600 mb-1">Step 2: Evidence Review</h3>
-                                            <p className="mb-1">5. Review the extracted medical document on the left.</p>
-                                            <p>6. Scroll to the very bottom right and click the blue button: <b>Submit Extracted Facts to Agentic Gate &rarr;</b>.</p>
-                                        </div>
-                                    </div>
-                                    <div className="space-y-4 border-l pl-8">
-                                        <div>
-                                            <h3 className="font-bold text-blue-600 mb-1">Step 3: Agentic Fraud Gate</h3>
-                                            <p className="mb-1">7. Once you are on the 3rd tab, click <b>Launch Multi-Agent Scan</b>.</p>
-                                            <p>8. Watch the three AI agents process the forensic and clinical logs in real-time.</p>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-bold text-blue-600 mb-1">Step 4: Final Outcome</h3>
-                                            <p className="mb-1">9. <b>If Cleared (Green):</b> Click the new green "Proceed to Benefit Assessment" button at the bottom.</p>
-                                            <p>10. <b>If Fraud (Red):</b> The system locks automatically.</p>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-bold text-blue-600 mb-1">Returning to this Page</h3>
-                                            <p>11. At any time, click <b>&larr; Back to Queue</b> in the top-left dark blue navigation bar to choose another user from this list.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    )}
-                    </AnimatePresence>
+                    <HelpComponents />
+
                     <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
                         <table className="w-full text-left">
                             <thead className="bg-slate-50 border-b border-slate-100">
@@ -354,17 +363,23 @@ const VerificationMockup = () => {
 
     return (
         <div className="w-full h-full flex flex-col font-sans bg-[#FAFBFD]">
+            <HelpComponents />
+            
             {/* Header */}
             <div className="bg-[#0070F0] text-white px-6 py-3 flex items-center justify-between shadow-md z-10 relative">
-                <div className="flex items-center gap-3">
-                    <span className="font-black tracking-widest text-lg">accenture</span>
-                    <span className="opacity-50">|</span>
-                    <span className="font-bold flex items-center gap-2">
-                        <ShieldAlert size={18} /> Prudential
-                    </span>
+                <div className="flex items-center gap-6">
+                    <button onClick={() => setView('list')} className="bg-white/20 hover:bg-white/30 border border-white/30 text-white px-4 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-2">
+                        &larr; Back to Users Queue
+                    </button>
+                    <div className="flex items-center gap-3">
+                        <span className="font-black tracking-widest text-lg">accenture</span>
+                        <span className="opacity-50">|</span>
+                        <span className="font-bold flex items-center gap-2">
+                            <ShieldAlert size={18} /> Prudential
+                        </span>
+                    </div>
                 </div>
                 <div className="flex items-center gap-6 text-sm font-bold">
-                    <span className="cursor-pointer" onClick={() => setView('list')}>&larr; Back to Queue</span>
                     <span>Agent Dashboard</span>
                     <span>Queue ▾</span>
                     <div className="w-8 h-8 rounded-full bg-white text-blue-600 flex items-center justify-center cursor-pointer">
