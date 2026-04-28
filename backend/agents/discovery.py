@@ -1,5 +1,5 @@
-from ..models import VerifiedClaim, DiscoveryPacket
-from ..database import get_db_connection
+from models import VerifiedClaim, DiscoveryPacket
+from database import get_db_connection
 import asyncio
 
 class DiscoveryAgent:

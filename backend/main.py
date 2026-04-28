@@ -1,13 +1,13 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from .models import VerifiedClaim, InvestigationReport, AgentFinding, InvestigationReport
-from .agents.forensic import ForensicAgent
-from .agents.clinical import ClinicalAgent
-from .agents.correlation import CorrelationAgent
+from models import VerifiedClaim, InvestigationReport, AgentFinding
+from agents.forensic import ForensicAgent
+from agents.clinical import ClinicalAgent
+from agents.correlation import CorrelationAgent
 import asyncio
 import os
 from contextlib import asynccontextmanager
-from .database import setup_db
+from database import setup_db
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

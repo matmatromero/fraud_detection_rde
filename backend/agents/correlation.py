@@ -1,6 +1,7 @@
-from ..models import VerifiedClaim, AgentFinding
+from models import VerifiedClaim, AgentFinding
 import os
-from ..database import get_db_connection
+import sqlite3
+from database import get_db_connection
 
 class CorrelationAgent:
     async def investigate(self, claim: VerifiedClaim) -> AgentFinding:

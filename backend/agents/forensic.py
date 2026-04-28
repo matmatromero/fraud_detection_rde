@@ -1,4 +1,4 @@
-from ..models import VerifiedClaim, AgentFinding
+from models import VerifiedClaim, AgentFinding
 
 class ForensicAgent:
     async def investigate(self, claim: VerifiedClaim) -> AgentFinding:

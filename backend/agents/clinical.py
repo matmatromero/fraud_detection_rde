@@ -1,7 +1,7 @@
 import os
 import google.generativeai as genai
-from ..models import VerifiedClaim, AgentFinding
-from ..database import get_db_connection
+from models import VerifiedClaim, AgentFinding
+from database import get_db_connection
 
 class ClinicalAgent:
     def __init__(self, api_key: str):
